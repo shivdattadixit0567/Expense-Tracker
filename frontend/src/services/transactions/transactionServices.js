@@ -55,13 +55,32 @@ export const listTransaction = async ({
   return response?.data;
 };
 
-export const updateTransaction = async (id) => {
+export const updateTransaction = async ({
+  type,
+  amount,
+  category,
+  date,
+  description,
+  id,
+}) => {
   //   console.log({ name, type, id });
-  const response = await axios.delete(`${BASE_URL}/transactions/put/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
+  const response = await axios.put(
+    `${BASE_URL}/transactions/update/${id}`,
+    {
+      data: {
+        type,
+        amount,
+        category,
+        date,
+        description,
+      },
     },
-  });
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 };
 

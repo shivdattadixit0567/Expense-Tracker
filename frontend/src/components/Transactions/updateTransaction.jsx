@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { updateTransaction } from "../../services/transactions/transactionServices";
 import { listCategories } from "../../services/category/categoryServices";
@@ -31,10 +31,16 @@ const TransactionUpdate = () => {
   //Dispatch
   // const dispatch = useDispatch();
   // Mutation
+  // const navigate = useNavigate();
+  const { id } = useParams();
+  const { data, isError, isLoading, isFetched, error, refetch } = useQuery({
+    queryFn: listCategories,
+    queryKey: ["listCategories"],
+  });
   const {
     mutateAsync,
     isPending,
-    isError: isupdateTransaction,
+    isError: istransactionError,
     error: transactionError,
     isSuccess,
   } = useMutation({
@@ -53,10 +59,11 @@ const TransactionUpdate = () => {
 
     onSubmit: (values) => {
       // console.log(values);
-      mutateAsync(values)
+      const data = { ...values, id };
+      mutateAsync(data)
         .then((data) => {
           console.log(data);
-          navigate("/categories");
+          navigate("/dashboard");
         })
         .catch((e) => console.log(e));
     },

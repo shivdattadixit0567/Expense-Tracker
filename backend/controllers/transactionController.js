@@ -73,13 +73,27 @@ const transactionController = {
   update: asyncHandler(async (req, res) => {
     const transaction = await Transaction.findById(req.params.id);
     if (transaction && transaction.user.toString() === req.user.toString()) {
-      transaction.type = req.body.type || transaction.type;
-      transaction.category = req.body.category || transaction.category;
-      transaction.amount = req.body.amount || transaction.amount;
-      transaction.date = req.body.date || transaction.date;
-      transaction.description = req.body.description || transaction.description;
-
-      const updatedTransaction = await transaction.save();
+      console.log(req.body.data);
+      const newType =
+        req.body.data.type.charAt(0).toUpperCase() +
+        req.body.data.type.slice(1);
+      if (transaction.type !== newType) {
+        transaction.type = newType;
+      }
+      // transaction.type = req.body.data.type || transaction.type;
+      if (transaction.category !== req.body.data.category) {
+        transaction.category = req.body.data.category;
+      }
+      if (transaction.amount !== req.body.data.amount) {
+        transaction.amount = req.body.data.amount;
+      }
+      if (transaction.date !== req.body.data.date) {
+        transaction.date = req.body.data.date;
+      }
+      if (transaction.description !== req.body.data.description) {
+        transaction.description = req.body.data.description;
+      }
+      const updatedTransaction = await transaction.save({ new: true });
       res.json(updatedTransaction);
     }
   }),

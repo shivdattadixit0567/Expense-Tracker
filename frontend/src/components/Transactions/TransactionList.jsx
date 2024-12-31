@@ -8,7 +8,7 @@ import {
   deleteTransaction,
 } from "../../services/transactions/transactionServices";
 import { listCategories } from "../../services/category/categoryServices";
-
+import { Link } from "react-router-dom";
 const TransactionList = () => {
   //!Filtering state
   const [filters, setFilters] = useState({
@@ -66,25 +66,37 @@ const TransactionList = () => {
       .catch((e) => console.log(e));
   };
 
+  // const handleUpdateTransaction = (id)=>{
+  //   const {mutateAsync, isPending, error, isSuccess} = useMutation({
+  //     mutationFn: updateTransaction,
+  //     mutationKey: ["update-transaction"],
+  //   })
+  //   mutateAsync(id)
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((e) => console.log(e));
+  // }
+
   return (
     <div className="my-4 p-4 shadow-lg rounded-lg bg-white">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Start Date */}
-        <input
+        {/* <input
           type="date"
           name="startDate"
           value={filters.startDate}
           onChange={handleFilterChange}
           className="p-2 rounded-lg border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-        />
+        /> */}
         {/* End Date */}
-        <input
+        {/* <input
           value={filters.endDate}
           onChange={handleFilterChange}
           type="date"
           name="endDate"
           className="p-2 rounded-lg border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-        />
+        /> */}
         {/* Type */}
         <div className="relative">
           <select
@@ -155,12 +167,11 @@ const TransactionList = () => {
                   </span>
                 </div>
                 <div className="flex space-x-3">
-                  <button
-                    onClick={() => handleUpdateTransaction(transaction._id)}
-                    className="text-blue-500 hover:text-blue-700"
-                  >
-                    <FaEdit />
-                  </button>
+                  <Link to={`/update-transaction/${transaction._id}`}>
+                    <button className="text-blue-500 hover:text-blue-700">
+                      <FaEdit />
+                    </button>
+                  </Link>
                   <button
                     onClick={() => handleDelete(transaction._id)}
                     className="text-red-500 hover:text-red-700"
