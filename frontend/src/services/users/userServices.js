@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getUserFromStorage } from "../../utils/getUserFromStorage";
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_BASE_URL;
 
 // console.log(BASE_URL);
 const token = getUserFromStorage();
