@@ -5,7 +5,7 @@ import { getUserFromStorage } from "../../utils/getUserFromStorage";
 const token = getUserFromStorage();
 export const addCategory = async (categoryData) => {
   const response = await axios.post(
-    `${Process.env.REACT_APP_BASE_URL}/categories/create`,
+    `${process.env.REACT_APP_BASE_URL}/categories/create`,
     categoryData,
     {
       headers: {
@@ -17,11 +17,14 @@ export const addCategory = async (categoryData) => {
 };
 
 export const listCategories = async () => {
-  const response = await axios.get(`${BASE_URL}/categories/lists`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.get(
+    `${process.env.REACT_APP_BASE_URL}/categories/lists`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   // console.log(response.data);
   return response.data;
 };
@@ -29,7 +32,7 @@ export const listCategories = async () => {
 export const updateCategories = async ({ name, type, id }) => {
   console.log({ name, type, id });
   const response = await axios.put(
-    `${Process.env.REACT_APP_BASE_URL}/categories/update/${id}`,
+    `${process.env.REACT_APP_BASE_URL}/categories/update/${id}`,
     {
       name,
       type,

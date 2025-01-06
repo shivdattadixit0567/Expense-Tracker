@@ -11,7 +11,7 @@ export const addTransaction = async ({
   description,
 }) => {
   const response = await axios.post(
-    `${Process.env.REACT_APP_BASE_URL}/transactions/create`,
+    `${process.env.REACT_APP_BASE_URL}/transactions/create`,
     {
       data: {
         type,
@@ -39,7 +39,7 @@ export const listTransaction = async ({
   category,
 }) => {
   const response = await axios.get(
-    `${Process.env.REACT_APP_BASE_URL}/transactions/lists`,
+    `${process.env.REACT_APP_BASE_URL}/transactions/lists`,
     {
       params: {
         startDate,
@@ -67,7 +67,7 @@ export const updateTransaction = async ({
 }) => {
   //   console.log({ name, type, id });
   const response = await axios.put(
-    `${Process.env.REACT_APP_BASE_URL}/transactions/update/${id}`,
+    `${process.env.REACT_APP_BASE_URL}/transactions/update/${id}`,
     {
       data: {
         type,
@@ -88,10 +88,13 @@ export const updateTransaction = async ({
 
 export const deleteTransaction = async (id) => {
   //   console.log({ name, type, id });
-  const response = await axios.delete(`${BASE_URL}/transactions/delete/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.delete(
+    `${process.env.REACT_APP_BASE_URL}/transactions/delete/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 };
