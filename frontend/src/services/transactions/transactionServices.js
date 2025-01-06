@@ -12,7 +12,7 @@ export const addTransaction = async ({
   description,
 }) => {
   const response = await axios.post(
-    `${BASE_URL}/transactions/create`,
+    `${Process.env.REACT_APP_BASE_URL}/transactions/create`,
     {
       data: {
         type,
@@ -39,18 +39,21 @@ export const listTransaction = async ({
   type,
   category,
 }) => {
-  const response = await axios.get(`${BASE_URL}/transactions/lists`, {
-    params: {
-      startDate,
-      endDate,
-      type,
-      category,
-    },
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.get(
+    `${Process.env.REACT_APP_BASE_URL}/transactions/lists`,
+    {
+      params: {
+        startDate,
+        endDate,
+        type,
+        category,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   // console.log(response);
   return response?.data;
 };
@@ -65,7 +68,7 @@ export const updateTransaction = async ({
 }) => {
   //   console.log({ name, type, id });
   const response = await axios.put(
-    `${BASE_URL}/transactions/update/${id}`,
+    `${Process.env.REACT_APP_BASE_URL}/transactions/update/${id}`,
     {
       data: {
         type,

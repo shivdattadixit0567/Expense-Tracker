@@ -1,23 +1,29 @@
 import axios from "axios";
-import { BASE_URL } from "../../utils/url";
 import { getUserFromStorage } from "../../utils/getUserFromStorage";
 console.log(BASE_URL);
 const token = getUserFromStorage();
 console.log(token);
+
 export const loginApi = async (userData) => {
-  const response = await axios.post(`${BASE_URL}/users/login`, userData);
+  const response = await axios.post(
+    `${Process.env.REACT_APP_BASE_URL}/users/login`,
+    userData
+  );
   return response.data;
 };
 
 export const registerApi = async (userData) => {
-  const response = await axios.post(`${BASE_URL}/users/register`, userData);
+  const response = await axios.post(
+    `${Process.env.REACT_APP_BASE_URL}/users/register`,
+    userData
+  );
   return response.data;
 };
 
 export const changePassword = async ({ password }) => {
   console.log(password);
   const response = await axios.put(
-    `${BASE_URL}/users/change-password`,
+    `${Process.env.REACT_APP_BASE_URL}/users/change-password`,
     {
       data: {
         password,
@@ -35,7 +41,7 @@ export const changePassword = async ({ password }) => {
 
 export const updateProfile = async ({ email, username }) => {
   const response = await axios.put(
-    `${BASE_URL}/users/update-profile`,
+    `${Process.env.REACT_APP_BASE_URL}/users/update-profile`,
     {
       data: {
         email,

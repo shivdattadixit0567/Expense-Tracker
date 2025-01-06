@@ -6,7 +6,7 @@ console.log(BASE_URL);
 const token = getUserFromStorage();
 export const addCategory = async (categoryData) => {
   const response = await axios.post(
-    `${BASE_URL}/categories/create`,
+    `${Process.env.REACT_APP_BASE_URL}/categories/create`,
     categoryData,
     {
       headers: {
@@ -30,7 +30,7 @@ export const listCategories = async () => {
 export const updateCategories = async ({ name, type, id }) => {
   console.log({ name, type, id });
   const response = await axios.put(
-    `${BASE_URL}/categories/update/${id}`,
+    `${Process.env.REACT_APP_BASE_URL}/categories/update/${id}`,
     {
       name,
       type,
@@ -46,10 +46,13 @@ export const updateCategories = async ({ name, type, id }) => {
 
 export const deleteCategories = async (id) => {
   //   console.log({ name, type, id });
-  const response = await axios.delete(`${BASE_URL}/categories/delete/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.delete(
+    `${Process.env.REACT_APP_BASE_URL}/categories/delete/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 };

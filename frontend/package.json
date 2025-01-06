@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -17,6 +17,7 @@
     "@tanstack/react-query-devtools": "^5.29.2",
     "axios": "^1.7.9",
     "chart.js": "^4.4.7",
+    "dotenv": "^16.4.7",
     "formik": "^2.4.5",
     "frontend": "file:",
     "react": "^18.2.0",
