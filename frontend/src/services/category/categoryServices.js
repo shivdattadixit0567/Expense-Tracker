@@ -1,7 +1,6 @@
 import axios from "axios";
-import { BASE_URL } from "../../utils/url";
 import { getUserFromStorage } from "../../utils/getUserFromStorage";
-console.log(BASE_URL);
+// console.log(BASE_URL);
 
 const token = getUserFromStorage();
 export const addCategory = async (categoryData) => {
