@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getUserFromStorage } from "../../utils/getUserFromStorage";
+const apiUrl = import.meta.env.VITE_API_URL;
 // console.log(BASE_URL);
 const token = getUserFromStorage();
 console.log(token);
@@ -11,7 +12,7 @@ export const addTransaction = async ({
   description,
 }) => {
   const response = await axios.post(
-    `${process.env.REACT_APP_BASE_URL}/transactions/create`,
+    `${apiUrl}/transactions/create`,
     {
       data: {
         type,
@@ -38,21 +39,18 @@ export const listTransaction = async ({
   type,
   category,
 }) => {
-  const response = await axios.get(
-    `${process.env.REACT_APP_BASE_URL}/transactions/lists`,
-    {
-      params: {
-        startDate,
-        endDate,
-        type,
-        category,
-      },
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await axios.get(`${apiUrl}/transactions/lists`, {
+    params: {
+      startDate,
+      endDate,
+      type,
+      category,
+    },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   // console.log(response);
   return response?.data;
 };
@@ -67,7 +65,7 @@ export const updateTransaction = async ({
 }) => {
   //   console.log({ name, type, id });
   const response = await axios.put(
-    `${process.env.REACT_APP_BASE_URL}/transactions/update/${id}`,
+    `${apiUrl}/transactions/update/${id}`,
     {
       data: {
         type,
@@ -88,13 +86,10 @@ export const updateTransaction = async ({
 
 export const deleteTransaction = async (id) => {
   //   console.log({ name, type, id });
-  const response = await axios.delete(
-    `${process.env.REACT_APP_BASE_URL}/transactions/delete/${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const response = await axios.delete(`${apiUrl}/transactions/delete/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 };

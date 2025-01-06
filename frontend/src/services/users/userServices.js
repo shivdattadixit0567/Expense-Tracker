@@ -1,29 +1,25 @@
 import axios from "axios";
 import { getUserFromStorage } from "../../utils/getUserFromStorage";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 // console.log(BASE_URL);
 const token = getUserFromStorage();
 console.log(token);
 
 export const loginApi = async (userData) => {
-  const response = await axios.post(
-    `${process.env.REACT_APP_BASE_URL}/users/login`,
-    userData
-  );
+  const response = await axios.post(`${apiUrl}/users/login`, userData);
   return response.data;
 };
 
 export const registerApi = async (userData) => {
-  const response = await axios.post(
-    `${process.env.REACT_APP_BASE_URL}/users/register`,
-    userData
-  );
+  const response = await axios.post(`${apiUrl}/users/register`, userData);
   return response.data;
 };
 
 export const changePassword = async ({ password }) => {
   console.log(password);
   const response = await axios.put(
-    `${process.env.REACT_APP_BASE_URL}/users/change-password`,
+    `${apiUrl}/users/change-password`,
     {
       data: {
         password,
@@ -41,7 +37,7 @@ export const changePassword = async ({ password }) => {
 
 export const updateProfile = async ({ email, username }) => {
   const response = await axios.put(
-    `${process.env.REACT_APP_BASE_URL}/users/update-profile`,
+    `${apiUrl}/users/update-profile`,
     {
       data: {
         email,
