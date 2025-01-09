@@ -31,6 +31,8 @@ const TransactionForm = () => {
     queryFn: listCategories,
     queryKey: ["listCategories"],
   });
+  const data1 = data || [];
+  console.log(data1);
   //Dispatch
   // const dispatch = useDispatch();
   // Mutation
@@ -59,7 +61,7 @@ const TransactionForm = () => {
       mutateAsync(values)
         .then((data) => {
           console.log(data);
-          // navigate("/categories");
+          navigate("/dashboard");
         })
         .catch((e) => console.log(e));
     },
@@ -144,7 +146,7 @@ const TransactionForm = () => {
           className="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
         >
           <option value="">Select a category</option>
-          {data?.map((category) => (
+          {data1?.map((category) => (
             <option key={category?._id} value={category?.name}>
               {category.name}
             </option>

@@ -7,6 +7,7 @@ const categoryRouter = require("./routes/categoryRouter");
 const errorHandler = require("./middlewares/errorHandler");
 const transactionRouter = require("./routes/transactionRouter");
 const app = express();
+const path = require("path");
 
 const PORT = process.env.PORT || 8000;
 
@@ -26,5 +27,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", userRouter);
 app.use("/", categoryRouter);
 app.use("/", transactionRouter);
+
 app.use(errorHandler);
+app.use(express.static(path.join(__dirname, "dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

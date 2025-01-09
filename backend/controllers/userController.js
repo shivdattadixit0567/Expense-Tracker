@@ -34,7 +34,9 @@ const userController = {
   }),
   login: asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+    console.log(req.body);
     const user = await User.findOne({ email });
+
     if (!user) {
       throw new Error("User not found");
     }

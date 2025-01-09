@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getUserFromStorage } from "../../utils/getUserFromStorage";
 // console.log(BASE_URL);
-const apiUrl = import.meta.env.VITE_BASE_URL;
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const token = getUserFromStorage();
 export const addCategory = async (categoryData) => {
@@ -18,12 +18,13 @@ export const addCategory = async (categoryData) => {
 };
 
 export const listCategories = async () => {
+  console.log(token);
   const response = await axios.get(`${apiUrl}/categories/lists`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
-  // console.log(response.data);
+  console.log(response);
   return response.data;
 };
 

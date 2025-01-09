@@ -7,6 +7,7 @@ const token = getUserFromStorage();
 console.log(token);
 
 export const loginApi = async (userData) => {
+  console.log(userData);
   const response = await axios.post(`${apiUrl}/users/login`, userData);
   return response.data;
 };

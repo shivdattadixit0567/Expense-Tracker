@@ -41,7 +41,7 @@ const categoryController = {
 
   lists: asyncHandler(async (req, res) => {
     const category = await Category.find({ user: req.user });
-    // console.log(category);
+    console.log(req.user);
     if (!category) {
       res.json({ message: "Category not found" });
     }
