@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.log(err));
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://expense-tracker-hr7a.onrender.com",
 };
 app.use(cors());
 
