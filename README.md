@@ -15,7 +15,7 @@ This Expense Tracker is a full-stack web application built using JavaScript, Rea
 
 * Backend API: Developed with Node.jsand Express, connected to a MongoDB database.
 
-*** Technologies Used
+*** Technologies Used:
 ** Frontend:
 
 * JavaScript
