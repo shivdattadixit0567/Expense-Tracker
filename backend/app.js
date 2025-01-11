@@ -16,9 +16,9 @@ mongoose
   .then(() => console.log("DB connected"))
   .catch((err) => console.log(err));
 
-const corsOptions = {
-  origin: "https://expense-tracker-hr7a.onrender.com",
-};
+// const corsOptions = {
+//   origin: "https://expense-tracker-hr7a.onrender.com",
+// };
 app.use(cors());
 
 app.use(express.json());
