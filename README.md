@@ -1,7 +1,7 @@
 # Expense Tracker
 This Expense Tracker is a full-stack web application built using JavaScript, React.js, Tailwind CSS, Node.js, and MongoDB. It allows individuals to keep track of their expenses and income, providing an easy-to-use interface to manage personal finances.
 
-*** Features :
+# Features :
 
 * User Authentication: Secure user registration and login functionality to ensure data privacy.
 
@@ -15,8 +15,9 @@ This Expense Tracker is a full-stack web application built using JavaScript, Rea
 
 * Backend API: Developed with Node.jsand Express, connected to a MongoDB database.
 
-*** Technologies Used:
-** Frontend:
+# Technologies Used:
+
+Frontend:
 
 * JavaScript
 
@@ -24,7 +25,7 @@ This Expense Tracker is a full-stack web application built using JavaScript, Rea
 
 * Tailwind CSS
 
-** Backend:
+# Backend:
 
 * Node.js
 
@@ -32,7 +33,7 @@ This Expense Tracker is a full-stack web application built using JavaScript, Rea
 
 * MongoDB
 
-Others:
+# Others:
 
 * Mongoose (for MongoDB object modeling)
 
@@ -40,7 +41,7 @@ Others:
 
 * Chart.jsfor displaying charts
 
-** Usage
+# Usage
 * Register/Login: Create a new account or log in with existing credentials.
 
 * Add Transaction: Click on "Add Transaction" to record a new income or expense.
