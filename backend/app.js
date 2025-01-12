@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-// const cors = require("cors");
+const cors = require("cors");
 const userRouter = require("./routes/userRouter");
 const categoryRouter = require("./routes/categoryRouter");
 const errorHandler = require("./middlewares/errorHandler");
@@ -19,7 +19,7 @@ mongoose
 // const corsOptions = {
 //   origin: "https://expense-tracker-hr7a.onrender.com",
 // };
-// app.use(cors());
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
