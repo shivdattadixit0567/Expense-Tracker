@@ -44,7 +44,7 @@ Frontend:
 # Usage
 * Register/Login: Create a new account or log in with existing credentials.
 
-# Live AT
+# Running Live AT
 
 https://expense-tracker-iota-self.vercel.app/
 
