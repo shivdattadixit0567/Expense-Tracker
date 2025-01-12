@@ -14,7 +14,7 @@ const categoryController = {
 
     const validTypes = ["expense", "income"];
 
-    console.log(type);
+    // console.log(type);
     if (!validTypes.includes(type.toLowerCase())) {
       throw new Error("Invalid category type" + type);
     }
@@ -41,7 +41,7 @@ const categoryController = {
 
   lists: asyncHandler(async (req, res) => {
     const category = await Category.find({ user: req.user });
-    console.log(req.user);
+    // console.log(req.user);
     if (!category) {
       res.json({ message: "Category not found" });
     }

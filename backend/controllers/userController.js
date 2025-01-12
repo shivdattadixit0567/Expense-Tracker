@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const userController = {
   register: asyncHandler(async (req, res) => {
     const { username, email, password } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
 
     if (!username || !email || !password) {
       throw new Error("All fields are required");
@@ -34,7 +34,7 @@ const userController = {
   }),
   login: asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -61,7 +61,7 @@ const userController = {
   }),
 
   profile: asyncHandler(async (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     const user = await User.findById("676d7559ae10e54812fd0d88");
     if (!user) {
       throw new Error("User not found");
@@ -75,7 +75,7 @@ const userController = {
 
   changePassword: asyncHandler(async (req, res) => {
     const { password } = req.body.data;
-    console.log(req.body.data);
+    // console.log(req.body.data);
     // console.log(newPassword);
     const user = await User.findById(req.user);
 
@@ -99,7 +99,7 @@ const userController = {
 
   updateUserProfile: asyncHandler(async (req, res) => {
     const { email, username } = req.body.data;
-    console.log(req.body.data);
+    // console.log(req.body.data);
     const user = await User.findByIdAndUpdate(
       req.user,
       {
