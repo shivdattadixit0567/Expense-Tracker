@@ -46,7 +46,7 @@ Frontend:
 
 # Running Live AT
 
-https://expense-tracker-iota-self.vercel.app/
+https://expense-tracker-hr7a.onrender.com
 
 * Add Transaction: Click on "Add Transaction" to record a new income or expense.
 
